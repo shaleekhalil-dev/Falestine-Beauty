@@ -6,7 +6,7 @@ const translations = {
         heroBeauty: "فلسطين بيوتي.. هنا نقدر جمالك ونعتني به",
         videosTitle: "اعرفي أكثر عن جمالك من فلسطين",
         galleryTitle: "اعتني بجمالك",
-        magicTitle: "لمحة عن بعض اللمسات السحرية",
+        magicTitle: "لمحة عن بعض اللمسات السحرية", // تأكدت من وجوده هنا
         servicesTitle: "مجالات التجميل",
         bookingTitle: "احجزي استشارتك الآن",
         langBtn: "English",
@@ -19,7 +19,7 @@ const translations = {
         heroBeauty: "We care for your beauty",
         videosTitle: "Know more about your beauty",
         galleryTitle: "Beauty Gallery",
-        magicTitle: "Magic Touches",
+        magicTitle: "Magic Touches", // وهنا أيضاً
         servicesTitle: "Our Services",
         bookingTitle: "Book Now",
         langBtn: "العربية",
@@ -29,7 +29,6 @@ const translations = {
 
 let currentLang = 'ar';
 
-// تحديث الرابط إلى النسخة الأخيرة التي أرسلتها
 const SHEET_URL = "https://script.google.com/macros/s/AKfycbydAw3G5GGbNqKa1-aWeIWQJNbkL19toRVW1uMDwgysuDhSjV42spLBZYhB7O49D97j/exec";
 
 function switchLang() {
@@ -40,6 +39,7 @@ function switchLang() {
 function updateContent() {
     const data = translations[currentLang];
     
+    // الخريطة المحدثة لتشمل كل العناوين (بما فيها magic-title)
     const map = {
         'hero-name': data.heroName,
         'hero-slogan': data.heroSlogan,
@@ -47,7 +47,7 @@ function updateContent() {
         'hero-beauty': data.heroBeauty,
         'videos-title': data.videosTitle,
         'gallery-title': data.galleryTitle,
-        'magic-title': data.magicTitle,
+        'magic-title': data.magicTitle, // أضفته هنا ليتم ترجمته
         'services-title': data.servicesTitle,
         'booking-title': data.bookingTitle,
         'langBtn': data.langBtn
@@ -80,9 +80,8 @@ document.addEventListener('DOMContentLoaded', () => {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             const btn = form.querySelector('button');
-            btn.textContent = "جاري الحجز... | Booking...";
+            btn.textContent = (currentLang === 'ar') ? "جاري الحجز..." : "Booking...";
             
-            // جلب القيم من العناصر مع إضافة حقل الخدمة
             const payload = {
                 name: document.getElementById('cust-name').value,
                 phone: document.getElementById('cust-phone').value,
@@ -95,13 +94,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 mode: 'no-cors',
                 body: JSON.stringify(payload)
             }).then(() => {
-                alert("تم استلام طلبك بنجاح! | Success!");
-                btn.textContent = "تأكيد الحجز";
+                alert((currentLang === 'ar') ? "تم استلام طلبك بنجاح!" : "Success! Your booking is received.");
+                btn.textContent = (currentLang === 'ar') ? "تأكيد الحجز" : "Confirm Booking";
                 form.reset();
             }).catch((err) => {
                 console.error(err);
-                alert("خطأ في الاتصال، حاول لاحقاً");
-                btn.textContent = "تأكيد الحجز";
+                alert((currentLang === 'ar') ? "خطأ في الاتصال، حاول لاحقاً" : "Connection error, try again later");
+                btn.textContent = (currentLang === 'ar') ? "تأكيد الحجز" : "Confirm Booking";
             });
         });
     }

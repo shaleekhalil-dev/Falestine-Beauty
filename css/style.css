@@ -42,10 +42,31 @@ body {
 
 #hero-safe { font-weight: 900; color: var(--fuchsia); font-size: 1.4rem; margin: 10px 0; }
 
-/* شبكات الفيديو والصور */
-.video-grid-compact { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; padding: 0 5%; }
-video { width: 100%; border-radius: 12px; border: 2px solid white; max-height: 200px; object-fit: cover; }
+/* --- تعديل الفيديوهات لمنع القص وضمان الوضوح --- */
+.video-grid-compact { 
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 15px; 
+    padding: 0 5%; 
+}
 
+video { 
+    width: 100%; 
+    border-radius: 12px; 
+    border: 2px solid white; 
+    background-color: #000; /* خلفية سوداء لملء الفراغ إذا كان الفيديو طولياً */
+    
+    /* الحل الجذري لمنع القص */
+    aspect-ratio: 16 / 9; /* توحيد قياس الإطارات */
+    object-fit: contain;  /* إظهار الفيديو كاملاً داخل الإطار دون قص أي طرف */
+    
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+video:hover { transform: scale(1.02); }
+
+/* شبكة الصور */
 .photo-grid-mini { padding: 0 5%; margin-bottom: 20px; }
 .mini-group { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 8px; }
 .mini-group:last-child { grid-template-columns: repeat(3, 1fr); padding: 0 12.5%; }
@@ -69,14 +90,14 @@ video { width: 100%; border-radius: 12px; border: 2px solid white; max-height: 2
 .glass-form { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; }
 .glass-form input { padding: 14px; border-radius: 12px; border: 1px solid var(--border); background: rgba(255,255,255,0.6); font-weight: bold; }
 
-/* إصلاح أزرار التواصل ومنع التداخل */
+/* أزرار التواصل */
 .booking-actions {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px; /* مسافة بين الأزرار */
+    gap: 15px;
     margin-top: 25px;
-    flex-wrap: wrap; /* للسماح بنزول الأزرار تحت بعض في الشاشات الصغيرة */
+    flex-wrap: wrap;
 }
 
 .btn-book, .btn-submit-booking {
@@ -97,7 +118,6 @@ video { width: 100%; border-radius: 12px; border: 2px solid white; max-height: 2
 
 .whatsapp { background: #25d366; }
 .call, .btn-submit-booking { background: var(--fuchsia); }
-
 .btn-book i { margin-left: 8px; }
 
 .section-header-box { background: var(--glass); padding: 10px 30px; border-radius: 15px; margin: 30px 0; display: inline-block; }
@@ -105,8 +125,13 @@ video { width: 100%; border-radius: 12px; border: 2px solid white; max-height: 2
 
 /* استعلامات الوسائط (Responsive) */
 @media (max-width: 800px) {
-    .video-grid-compact, .services-container { grid-template-columns: repeat(2, 1fr) !important; padding: 0 5% !important; }
+    .video-grid-compact { 
+        grid-template-columns: repeat(2, 1fr) !important; 
+        padding: 0 5% !important; 
+    }
+    video { aspect-ratio: auto; /* ترك الحرية للفيديو في الموبايل */ }
+    .services-container { grid-template-columns: repeat(2, 1fr) !important; }
     .mini-group { grid-template-columns: repeat(2, 1fr) !important; }
-    .booking-actions { flex-direction: column; gap: 12px; } /* جعل الأزرار فوق بعض في الموبايل لمنع التداخل */
+    .booking-actions { flex-direction: column; gap: 12px; }
     .btn-book { width: 90%; }
 }
