@@ -25,6 +25,7 @@ body {
 
 .social-bar a { font-size: 2.5rem; color: var(--fuchsia); margin: 0 10px; }
 
+/* القسم التعريفي */
 .hero-section { padding: 80px 20px 40px; display: flex; flex-direction: column; align-items: center; }
 
 .profile-pic-small {
@@ -41,8 +42,8 @@ body {
 
 #hero-safe { font-weight: 900; color: var(--fuchsia); font-size: 1.4rem; margin: 10px 0; }
 
+/* شبكات الفيديو والصور */
 .video-grid-compact { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; padding: 0 5%; }
-
 video { width: 100%; border-radius: 12px; border: 2px solid white; max-height: 200px; object-fit: cover; }
 
 .photo-grid-mini { padding: 0 5%; margin-bottom: 20px; }
@@ -50,16 +51,16 @@ video { width: 100%; border-radius: 12px; border: 2px solid white; max-height: 2
 .mini-group:last-child { grid-template-columns: repeat(3, 1fr); padding: 0 12.5%; }
 .photo-grid-mini img { width: 100%; border-radius: 10px; border: 2px solid white; }
 
+/* الخدمات */
 .services-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 0 10%; }
-
 .service-card {
     background: var(--glass); backdrop-filter: blur(10px); padding: 25px;
     border-radius: 20px; font-weight: 900; color: var(--fuchsia);
     border: 1px solid var(--border); transition: 0.3s; cursor: pointer;
 }
-
 .service-card:hover { transform: translateY(-8px); background: rgba(217, 2, 125, 0.15); }
 
+/* قسم الحجز */
 .booking-glass {
     background: var(--glass); backdrop-filter: blur(25px); padding: 40px;
     border-radius: 35px; border: 1px solid var(--border); max-width: 700px; margin: auto;
@@ -68,13 +69,44 @@ video { width: 100%; border-radius: 12px; border: 2px solid white; max-height: 2
 .glass-form { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; }
 .glass-form input { padding: 14px; border-radius: 12px; border: 1px solid var(--border); background: rgba(255,255,255,0.6); font-weight: bold; }
 
+/* إصلاح أزرار التواصل ومنع التداخل */
+.booking-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px; /* مسافة بين الأزرار */
+    margin-top: 25px;
+    flex-wrap: wrap; /* للسماح بنزول الأزرار تحت بعض في الشاشات الصغيرة */
+}
+
+.btn-book, .btn-submit-booking {
+    text-decoration: none;
+    padding: 15px 25px;
+    border-radius: 50px;
+    color: white;
+    font-weight: 900;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.3s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 180px;
+}
+
+.whatsapp { background: #25d366; }
+.call, .btn-submit-booking { background: var(--fuchsia); }
+
+.btn-book i { margin-left: 8px; }
+
 .section-header-box { background: var(--glass); padding: 10px 30px; border-radius: 15px; margin: 30px 0; display: inline-block; }
 .section-title { font-weight: 900; color: var(--fuchsia); font-size: 1.6rem; }
 
-.btn-submit-booking, .btn-book { text-decoration: none; padding: 15px 30px; border-radius: 50px; color: white; font-weight: 900; border: none; cursor: pointer; }
-.whatsapp { background: #25d366; margin-right: 10px; }
-.call, .btn-submit-booking { background: var(--fuchsia); }
-
+/* استعلامات الوسائط (Responsive) */
 @media (max-width: 800px) {
-    .video-grid-compact, .services-container, .mini-group { grid-template-columns: repeat(2, 1fr) !important; padding: 0 !important; }
+    .video-grid-compact, .services-container { grid-template-columns: repeat(2, 1fr) !important; padding: 0 5% !important; }
+    .mini-group { grid-template-columns: repeat(2, 1fr) !important; }
+    .booking-actions { flex-direction: column; gap: 12px; } /* جعل الأزرار فوق بعض في الموبايل لمنع التداخل */
+    .btn-book { width: 90%; }
 }
