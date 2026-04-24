@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فلسطين خبيرة تجميل | Falestine Beauty</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="watermark-bg"></div>
+
+    <nav class="top-nav">
+        <div class="social-bar">
+            <a href="https://www.facebook.com/em.mokhtar.9" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/falestine_beauty/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/972598861631" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.snapchat.com/add/falestin-beauty" target="_blank"><i class="fab fa-snapchat"></i></a>
+        </div>
+        <button class="lang-switch-btn" onclick="switchLang()" id="langBtn">English</button>
+    </nav>
+
+    <header class="hero-section">
+        <div class="profile-container">
+            <img src="assets/images/1.jpg" alt="فلسطين" class="profile-pic-small">
+        </div>
+        <div class="hero-glass text-container">
+            <h1 id="hero-name">فلسطين خبيرة تجميل</h1>
+            <p id="hero-slogan">تسعى دائماً لتعلم الجديد والآمن لتكوني أنتِ الأجمل بين نساء مجتمعك</p>
+            <p id="hero-safe">مع فلسطين أنتِ بأيدي أمينة</p>
+            <p id="hero-beauty">فلسطين بيوتي.. هنا نقدر جمالك ونعتني به</p>
+        </div>
+    </header>
+
+    <section class="content-section">
+        <div class="section-header-box"><h2 class="section-title" id="videos-title">اعرفي أكثر عن جمالك من فلسطين</h2></div>
+        <div class="video-grid-compact">
+            <video controls><source src="assets/videos/1.mp4" type="video/mp4"></video>
+            <video controls><source src="assets/videos/2.mp4" type="video/mp4"></video>
+            <video controls><source src="assets/videos/3.mp4" type="video/mp4"></video>
+            <video controls><source src="assets/videos/4.mp4" type="video/mp4"></video>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="section-header-box"><h2 class="section-title" id="gallery-title">اعتني بجمالك</h2></div>
+        <div class="photo-grid-mini">
+            <div class="mini-group">
+                <img src="assets/images/2.png">
+                <img src="assets/images/4.png">
+                <img src="assets/images/6.png">
+                <img src="assets/images/7.png">
+            </div>
+            <div class="mini-group">
+                <img src="assets/images/3.png">
+                <img src="assets/images/5.png">
+                <img src="assets/images/8.png">
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="section-header-box"><h2 class="section-title" id="magic-title">لمحة عن بعض اللمسات السحرية</h2></div>
+        <div class="video-grid-compact">
+            <video controls><source src="assets/videos/5.mp4" type="video/mp4"></video>
+            <video controls><source src="assets/videos/6.mp4" type="video/mp4"></video>
+            <video controls><source src="assets/videos/7.mp4" type="video/mp4"></video>
+            <video controls><source src="assets/videos/8.mp4" type="video/mp4"></video>
+        </div>
+    </section>
+
+    <section class="services-section">
+        <div class="section-header-box"><h2 class="section-title" id="services-title">مجالات التجميل</h2></div>
+        <div class="services-container" id="services-grid"></div>
+    </section>
+
+    <section class="booking-section">
+        <div class="booking-glass">
+            <div class="section-header-box"><h2 id="booking-title">احجزي استشارتك الآن</h2></div>
+            <form id="booking-form" class="glass-form">
+                <input type="text" id="cust-name" placeholder="الاسم الكامل" required>
+                <input type="tel" id="cust-phone" placeholder="رقم التواصل" required>
+                <input type="date" id="book-date" required>
+                <button type="submit" class="btn-submit-booking">تأكيد الحجز | Confirm</button>
+            </form>
+            <div class="booking-actions">
+                <a href="https://wa.me/972598861631" class="btn-book whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="tel:+972598861631" class="btn-book call"><i class="fas fa-phone-alt"></i> 0598861631</a>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
