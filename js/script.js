@@ -5,8 +5,9 @@ const translations = {
         heroSafe: "مع فلسطين أنتِ بأيدي أمينة",
         heroBeauty: "فلسطين بيوتي.. هنا نقدر جمالك ونعتني به",
         videosTitle: "اعرفي أكثر عن جمالك من فلسطين",
+        learnMoreTitle: "اعرفي أكثر", // العنوان الجديد المضاف
         galleryTitle: "اعتني بجمالك",
-        magicTitle: "لمحة عن بعض اللمسات السحرية", // تأكدت من وجوده هنا
+        magicTitle: "لمحة عن بعض اللمسات السحرية",
         servicesTitle: "مجالات التجميل",
         bookingTitle: "احجزي استشارتك الآن",
         langBtn: "English",
@@ -18,8 +19,9 @@ const translations = {
         heroSafe: "In safe hands with Falestine",
         heroBeauty: "We care for your beauty",
         videosTitle: "Know more about your beauty",
+        learnMoreTitle: "Learn More", // الترجمة الإنجليزية
         galleryTitle: "Beauty Gallery",
-        magicTitle: "Magic Touches", // وهنا أيضاً
+        magicTitle: "Magic Touches",
         servicesTitle: "Our Services",
         bookingTitle: "Book Now",
         langBtn: "العربية",
@@ -39,15 +41,16 @@ function switchLang() {
 function updateContent() {
     const data = translations[currentLang];
     
-    // الخريطة المحدثة لتشمل كل العناوين (بما فيها magic-title)
+    // ربط المعرفات (IDs) الموجودة في HTML مع النصوص المترجمة
     const map = {
         'hero-name': data.heroName,
         'hero-slogan': data.heroSlogan,
         'hero-safe': data.heroSafe,
         'hero-beauty': data.heroBeauty,
         'videos-title': data.videosTitle,
+        'learn-more-title': data.learnMoreTitle, // تفعيل ترجمة القسم الجديد
         'gallery-title': data.galleryTitle,
-        'magic-title': data.magicTitle, // أضفته هنا ليتم ترجمته
+        'magic-title': data.magicTitle,
         'services-title': data.servicesTitle,
         'booking-title': data.bookingTitle,
         'langBtn': data.langBtn
