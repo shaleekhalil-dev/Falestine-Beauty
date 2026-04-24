@@ -28,7 +28,9 @@ const translations = {
 };
 
 let currentLang = 'ar';
-const SHEET_URL = "https://script.google.com/macros/s/AKfycbzk_FKS9iB8gSr8lZtSV0nAh5WfdQ551WJNeiFV-g2SVbQyoB_2HdNhD1UsFEuReYYU/exec";
+
+// تحديث الرابط إلى النسخة الأخيرة التي أرسلتها
+const SHEET_URL = "https://script.google.com/macros/s/AKfycbydAw3G5GGbNqKa1-aWeIWQJNbkL19toRVW1uMDwgysuDhSjV42spLBZYhB7O49D97j/exec";
 
 function switchLang() {
     currentLang = (currentLang === 'ar') ? 'en' : 'ar';
@@ -38,7 +40,6 @@ function switchLang() {
 function updateContent() {
     const data = translations[currentLang];
     
-    // تحديث النصوص الأساسية بحماية
     const map = {
         'hero-name': data.heroName,
         'hero-slogan': data.heroSlogan,
@@ -59,7 +60,6 @@ function updateContent() {
 
     document.documentElement.dir = (currentLang === 'ar') ? 'rtl' : 'ltr';
 
-    // بناء شبكة الخدمات
     const grid = document.getElementById('services-grid');
     if (grid) {
         grid.innerHTML = '';
@@ -72,7 +72,6 @@ function updateContent() {
     }
 }
 
-// تشغيل عند تحميل المستند لضمان وجود العناصر
 document.addEventListener('DOMContentLoaded', () => {
     updateContent();
 
@@ -81,12 +80,14 @@ document.addEventListener('DOMContentLoaded', () => {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             const btn = form.querySelector('button');
-            btn.textContent = "جاري الحجز...";
+            btn.textContent = "جاري الحجز... | Booking...";
             
+            // جلب القيم من العناصر مع إضافة حقل الخدمة
             const payload = {
                 name: document.getElementById('cust-name').value,
                 phone: document.getElementById('cust-phone').value,
-                date: document.getElementById('book-date').value
+                date: document.getElementById('book-date').value,
+                service: document.getElementById('book-service') ? document.getElementById('book-service').value : "استشارة عامة"
             };
 
             fetch(SHEET_URL, {
@@ -94,11 +95,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 mode: 'no-cors',
                 body: JSON.stringify(payload)
             }).then(() => {
-                alert("تم استلام طلبك!");
+                alert("تم استلام طلبك بنجاح! | Success!");
                 btn.textContent = "تأكيد الحجز";
                 form.reset();
-            }).catch(() => {
-                alert("خطأ في الاتصال");
+            }).catch((err) => {
+                console.error(err);
+                alert("خطأ في الاتصال، حاول لاحقاً");
                 btn.textContent = "تأكيد الحجز";
             });
         });
